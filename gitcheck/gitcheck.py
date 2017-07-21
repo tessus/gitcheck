@@ -70,9 +70,9 @@ def showDebug(mess, level='info'):
 
 
 # Search all local repositories from current directory
-def searchRepositories():
+def _searchRepositories(directory):
     showDebug('Beginning scan... building list of git folders')
-    dirs = argopts.get('searchDir', [os.path.abspath(os.getcwd())])
+    dirs = argopts.get('searchDir', [directory])
     repo = set()
     for curdir in dirs:
         if curdir[-1:] == '/':
@@ -91,6 +91,19 @@ def searchRepositories():
 
     showDebug('Done')
     return sorted(repo)
+
+
+# Search all local repositories from current directory
+def searchRepositories():
+    dir = os.path.abspath(os.getcwd())
+    repo = _searchRepositories(dir)
+    while len(repo) == 0:
+        dir = "/".join(dir.split('/')[0:-1])
+        if len(dir) <= 1:
+            repo = set()
+            break
+        repo = _searchRepositories(dir)
+    return repo
 
 
 # Check state of a git repository
@@ -203,7 +216,7 @@ def checkRepository(rep, branch):
             cbranch = "%s%s" % (colortheme['branchname'], branch)
             print("%(prjname)s/%(cbranch)s %(strlocal)s%(topush)s%(topull)s" % locals())
 
-        if argopts.get('verbose', False):
+        if argopts.get('verbose', True):
             if ischange > 0:
                 filename = "  |--Local"
                 if not argopts.get('email', False):
@@ -486,7 +499,7 @@ def main():
     readDefaultConfig()
     for opt, arg in opts:
         if opt in ["-v", "--verbose"]:
-            argopts['verbose'] = True
+            argopts['verbose'] = False
         elif opt in ["--debug"]:
             argopts['debugmod'] = True
         elif opt in ["-r", "--remote"]:
