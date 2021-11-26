@@ -483,7 +483,7 @@ def main():
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "vhrubw:i:d:m:q:e:al:",
+            "vhrubw:i:d:m:qeal:",
             [
                 "verbose", "debug", "help", "remote", "untracked", "bell", "watch=", "ignore-branch=",
                 "dir=", "maxdepth=", "quiet", "email", "init-email", "all-branch", "localignore="
