@@ -216,7 +216,7 @@ def checkRepository(rep, branch):
             cbranch = "%s%s" % (colortheme['branchname'], branch)
             print("%(prjname)s/%(cbranch)s %(strlocal)s%(topush)s%(topull)s" % locals())
 
-        if argopts.get('verbose', True):
+        if argopts.get('verbose', False):
             if ischange > 0:
                 filename = "  |--Local"
                 if not argopts.get('email', False):
@@ -499,7 +499,7 @@ def main():
     readDefaultConfig()
     for opt, arg in opts:
         if opt in ["-v", "--verbose"]:
-            argopts['verbose'] = False
+            argopts['verbose'] = True
         elif opt in ["--debug"]:
             argopts['debugmod'] = True
         elif opt in ["-r", "--remote"]:
