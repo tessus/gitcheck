@@ -31,12 +31,12 @@ Remove unsupported github tags:
     return content
 
 
-install_requires = [
+installRequires = [
     'gitpython',
     'colored'
     ]
 
-tests_require = install_requires + [
+testsRequire = installRequires + [
      'pep8',
      'coveralls',
 ]
@@ -69,8 +69,8 @@ setup(
     author_email='bruno@adele.im',
     license='GPL',
     url='https://github.com/badele/gitcheck',
-    install_requires=install_requires,
-    tests_require=tests_require,
+    install_requires=installRequires,
+    tests_require=testsRequire,
     test_suite='tests',
     py_modules=['gitcheck.gitcheck',],
     entry_points={
