@@ -44,7 +44,7 @@ testsRequire = installRequires + [
 
 setup(
     name='gitcheck',
-    version='0.3.22',
+    version='0.4.0',
     description='Check multiple git repository in one pass',
     long_description=rst('README.rst') + rst('CHANGELOG.txt'),
     classifiers=[
@@ -60,6 +60,9 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Software Development',
         'Topic :: Software Development :: Version Control',
@@ -67,8 +70,10 @@ setup(
     ],
     author='Bruno Adele',
     author_email='bruno@adele.im',
+    maintainer='Helmut K. C. Tessarek',
+    maintainer_email='kc+github@evermeet.cx',
     license='GPL',
-    url='https://github.com/badele/gitcheck',
+    url='https://github.com/tessus/gitcheck',
     install_requires=installRequires,
     tests_require=testsRequire,
     test_suite='tests',

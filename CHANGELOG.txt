@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Version 0.4.0 (2021-11-27)
+--------------------------
+ * fix q/e argument parsing
+ * fix setup requirements
+ * reset colors
+ * search in parent dirs if no repository has been found in subdir of repo
+
 Version 0.3.22 (2015-05-05)
 --------------------------
  * Check git repositories from an docker container
