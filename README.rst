@@ -1,7 +1,3 @@
-.. image:: https://travis-ci.org/badele/gitcheck.svg?branch=unittest
-    :target: https://travis-ci.org/badele/gitcheck
-
-
 gitcheck
 ========
 
@@ -20,7 +16,7 @@ Installation
 
 ::
 
-    pip install git+git://github.com/badele/gitcheck.git
+    pip install git+https://github.com/tessus/gitcheck.git
 
 
 Examples
@@ -113,8 +109,3 @@ Options
     -e, --email                          Send an email with result as html, using mail.properties parameters
     --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)
 
-French version
-~~~~~~~~~~~~~~
-
-A French version of this document is available here:
-http://bruno.adele.im/projets/gitcheck/
