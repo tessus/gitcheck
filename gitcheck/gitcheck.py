@@ -428,7 +428,7 @@ def gitcheck():
 
     if argopts.get('checkremote', False):
         for r in repo:
-            print ("Updating %s remotes..." % r)
+            print("Updating %s remotes..." % r)
             updateRemote(r)
 
     if argopts.get('watchInterval', 0) > 0:
@@ -470,7 +470,7 @@ def sendReport(content):
     # Write html file to disk
     f = open(filepath + '//result.html', 'w')
     f.write(htmlcontent)
-    print ("File saved under %s\\result.html" % filepath)
+    print("File saved under %s\\result.html" % filepath)
     # Record the MIME types of both parts - text/plain and text/html.
     part1 = MIMEText(text, 'plain')
     part2 = MIMEText(htmlcontent, 'html')
@@ -481,7 +481,7 @@ def sendReport(content):
     msg.attach(part1)
     msg.attach(part2)
     try:
-        print ("Sending email to %s" % config['to'])
+        print("Sending email to %s" % config['to'])
         # Send the message via local SMTP server.
         s = smtplib.SMTP(config['smtp'], config['smtp_port'])
         # sendmail function takes 3 arguments: sender's address, recipient's address
@@ -616,7 +616,7 @@ def main():
         except (KeyboardInterrupt, SystemExit):
             raise
         except Exception as e:
-            print ("Unexpected error:", str(e))
+            print("Unexpected error:", str(e))
 
         if argopts.get('watchInterval', 0) > 0:
             time.sleep(argopts.get('watchInterval', 0))
