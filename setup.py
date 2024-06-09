@@ -44,7 +44,7 @@ testsRequire = installRequires + [
 
 setup(
     name='gitcheck',
-    version='0.4.0',
+    version='0.5.0',
     description='Check multiple git repository in one pass',
     long_description=rst('README.rst') + rst('CHANGELOG.txt'),
     classifiers=[
@@ -58,11 +58,12 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Software Development',
         'Topic :: Software Development :: Version Control',
