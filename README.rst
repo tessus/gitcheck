@@ -20,6 +20,7 @@ Options
 
     -v, --verbose                        Show files & commits
     --debug                              Show debug message
+    --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)
     -r, --remote                         force remote update(slow)
     -u, --untracked                      Show untracked files
     -b, --bell                           bell on action needed
@@ -29,7 +30,9 @@ Options
     -m <maxdepth>, --maxdepth=<maxdepth> Limit the depth of repositories search
     -q, --quiet                          Display info only when repository needs action
     -e, --email                          Send an email with result as html, using mail.properties parameters
-    --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)
+    -a, --all-branch                     Show the status of all branches
+    -l <re>, --localignore=<re>          ignore changes in local files which match the regex <re>
+    -s, --stash                          Show number of stashed changes
     -c --commit                          Show short commit hash (git rev-parse --short HEAD)
     -C --Commit                          Show long commit hash (git rev-parse HEAD)
 
