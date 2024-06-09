@@ -4,7 +4,7 @@ gitcheck
 Info
 ----
 
-The upstream project is abandoned and this repo includes upstream PRs and minor fixes.
+The `upstream project <https://github.com/badele/gitcheck>`_  is abandoned and this repo includes upstream PRs and minor fixes.
 
 Installation
 ------------
