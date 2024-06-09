@@ -445,10 +445,10 @@ def initEmailConfig():
         'to': 'to@server.com'
     }
     userPath = expanduser('~')
-    saveFilePath = r'%s\Documents\.gitcheck' % userPath
+    saveFilePath = r'%s/.config/gitcheck/' % userPath
     if not os.path.exists(saveFilePath):
         os.makedirs(saveFilePath)
-    filename = saveFilePath + '\mail.properties'
+    filename = saveFilePath + 'mail.properties'
     json.dump(config, fp=open(filename, 'w'), indent=4)
     print('Please, modify config file located here : %s' % filename)
 
