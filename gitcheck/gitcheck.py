@@ -517,6 +517,7 @@ def usage():
     print("== Common options ==")
     print("  -v, --verbose                        Show files & commits")
     print("  --debug                              Show debug message")
+    print("  --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)")
     print("  -r, --remote                         force remote update (slow)")
     print("  -u, --untracked                      Show untracked files")
     print("  -b, --bell                           bell on action needed")
@@ -529,7 +530,6 @@ def usage():
     print("  -a, --all-branch                     Show the status of all branches")
     print("  -l <re>, --localignore=<re>          ignore changes in local files which match the regex <re>")
     print("  -s, --stash                          Show number of stashed changes")
-    print("  --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)")
     print("  -c --commit                          Show short commit hash (git rev-parse --short HEAD) ")
     print("  -C --Commit                          Show long commit hash (git rev-parse HEAD) ")
 
