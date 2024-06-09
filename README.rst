@@ -1,15 +1,10 @@
 gitcheck
 ========
 
-When working simultaneously on several git repositories, it is easy to
-loose the overview on the advancement of your work.  This is why I
-decided to write gitcheck, a tool which reports the status of the
-repositories it finds in a file tree.  This report can of course be
-displayed on the terminal but also be sent by email.
+Info
+----
 
-Now you can also check your host git from an docker container. See the docker section
-
-
+The upstream project is abandoned and this repo includes upstream PRs and minor fixes.
 
 Installation
 ------------
@@ -18,6 +13,25 @@ Installation
 
     pip install git+https://github.com/tessus/gitcheck.git
 
+Options
+-------
+
+.. code:: plaintext
+
+    -v, --verbose                        Show files & commits
+    --debug                              Show debug message
+    -r, --remote                         force remote update(slow)
+    -u, --untracked                      Show untracked files
+    -b, --bell                           bell on action needed
+    -w <sec>, --watch=<sec>              after displaying, wait <sec> and run again
+    -i <re>, --ignore-branch=<re>        ignore branches matching the regex <re>
+    -d <dir>, --dir=<dir>                Search <dir> for repositories
+    -m <maxdepth>, --maxdepth=<maxdepth> Limit the depth of repositories search
+    -q, --quiet                          Display info only when repository needs action
+    -e, --email                          Send an email with result as html, using mail.properties parameters
+    --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)
+    -c --commit                          Show short commit hash (git rev-parse --short HEAD)
+    -C --Commit                          Show long commit hash (git rev-parse HEAD)
 
 Examples
 --------
@@ -62,7 +76,7 @@ if it found, it is imported, see the `mygitcheck.py.sample`
 
 
 Docker container
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 You can check your git repositories from an docker container (from your host)
 
@@ -90,25 +104,13 @@ You can also create a shell function into the host, exemple for ZSH
 
 More info about the gitcheck container https://registry.hub.docker.com/u/badele/alpine-gitcheck/
 
+Original author's description
+-----------------------------
 
-Options
-~~~~~~~
+When working simultaneously on several git repositories, it is easy to
+loose the overview on the advancement of your work.  This is why I
+decided to write gitcheck, a tool which reports the status of the
+repositories it finds in a file tree.  This report can of course be
+displayed on the terminal but also be sent by email.
 
-.. code:: plaintext
-
-    -v, --verbose                        Show files & commits
-    --debug                              Show debug message
-    -r, --remote                         force remote update(slow)
-    -u, --untracked                      Show untracked files
-    -b, --bell                           bell on action needed
-    -w <sec>, --watch=<sec>              after displaying, wait <sec> and run again
-    -i <re>, --ignore-branch=<re>        ignore branches matching the regex <re>
-    -d <dir>, --dir=<dir>                Search <dir> for repositories
-    -m <maxdepth>, --maxdepth=<maxdepth> Limit the depth of repositories search
-    -q, --quiet                          Display info only when repository needs action
-    -e, --email                          Send an email with result as html, using mail.properties parameters
-    --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)
-    -c --commit                          Show short commit hash (git rev-parse --short HEAD)
-    -C --Commit                          Show long commit hash (git rev-parse HEAD) 
-
-
+Now you can also check your host git from an docker container. See the docker section
