@@ -53,7 +53,6 @@ if colortheme is None:
         'reset': "\033[2J\033[H"
     }
 
-
 class html:
     msg = "<ul>\n"
     topull = ""
@@ -64,11 +63,9 @@ class html:
     timestamp = ""
     commit = ""
 
-
 def showDebug(mess, level='info'):
     if argopts.get('debugmod', False):
         print(mess)
-
 
 # Search all local repositories from current directory
 def _searchRepositories(directory):
@@ -93,7 +90,6 @@ def _searchRepositories(directory):
     showDebug('Done')
     return sorted(repo)
 
-
 # Search all local repositories from current directory
 def searchRepositories():
     dir = os.path.abspath(os.getcwd())
@@ -105,7 +101,6 @@ def searchRepositories():
             break
         repo = _searchRepositories(dir)
     return repo
-
 
 # Check state of a git repository
 def checkRepository(rep, branch):
@@ -256,8 +251,6 @@ def checkRepository(rep, branch):
             cbranch = "%s%s" % (colortheme['branchname'], branch)
             print("%(prjname)s/%(cbranch)s %(commit)s %(strlocal)s%(topush)s%(topull)s" % locals())
 
-
-
         if argopts.get('verbose', False):
             if len(changes) > 0:
                 filename = "  |--Local"
@@ -335,7 +328,6 @@ def checkRepository(rep, branch):
     print("\033[0m", end="")    # Reset the terminal colors the original ones.
     return actionNeeded
 
-
 def getLocalFilesChange(rep):
     files = []
     # curdir = os.path.abspath(os.getcwd())
@@ -349,32 +341,25 @@ def getLocalFilesChange(rep):
             m = snbchange.match(l)
             if m:
                 files.append([m.group(1), m.group(2)])
-
     return files
-
 
 def hasRemoteBranch(rep, remote, branch):
     result = gitExec(rep, 'branch -r')
     return '%s/%s' % (remote, branch) in result
-
 
 def getLocalToPush(rep, remote, branch):
     if not hasRemoteBranch(rep, remote, branch):
         return []
     result = gitExec(rep, "log %(remote)s/%(branch)s..%(branch)s --oneline"
                      % locals())
-
     return [x for x in result.split('\n') if x]
-
 
 def getRemoteToPull(rep, remote, branch):
     if not hasRemoteBranch(rep, remote, branch):
         return []
     result = gitExec(rep, "log %(branch)s..%(remote)s/%(branch)s --oneline"
                      % locals())
-
     return [x for x in result.split('\n') if x]
-
 
 def getStashed(rep):
     result = gitExec(rep, "stash list --oneline")
@@ -384,17 +369,14 @@ def getStashed(rep):
 
     return split_lines
 
-
 def updateRemote(rep):
     gitExec(rep, "remote update")
-
 
 # Get Default branch for repository
 def getDefaultBranch(rep):
     sbranch = re.compile(r'^\* (.*)', flags=re.MULTILINE)
     gitbranch = gitExec(rep, "branch"
                         % locals())
-
     branch = ""
     m = sbranch.search(gitbranch)
     if m:
@@ -402,14 +384,11 @@ def getDefaultBranch(rep):
 
     return {branch}
 
-
 # Get all branches for repository
 def getAllBranches(rep):
     gitbranch = gitExec(rep, "branch"
                         % locals())
-
     branch = gitbranch.splitlines()
-
     return [b[2:] for b in branch]
 
 # @Xuning: Get latest commit for repository on the branch
@@ -426,10 +405,8 @@ def getLatestCommit(rep):
 def getRemoteRepositories(rep):
     result = gitExec(rep, "remote"
                      % locals())
-
     remotes = [x for x in result.split('\n') if x]
     return remotes
-
 
 def gitExec(path, cmd):
     commandToExecute = "git -C \"%s\" %s" % (path, cmd)
@@ -473,7 +450,6 @@ def gitcheck():
     if actionNeeded and argopts.get('bellOnActionNeeded', False):
         print(colortheme['bell'])
 
-
 def sendReport(content):
     userPath = expanduser('~')
     filepath = r'%s\Documents\.gitcheck' % userPath
@@ -515,9 +491,7 @@ def sendReport(content):
     except SMTPException as e:
         print("Error sending email : %s" % str(e))
 
-
 def initEmailConfig():
-
     config = {
         'smtp': 'yourserver',
         'smtp_port': 25,
@@ -532,12 +506,10 @@ def initEmailConfig():
     json.dump(config, fp=open(filename, 'w'), indent=4)
     print('Please, modify config file located here : %s' % filename)
 
-
 def readDefaultConfig():
     filename = expanduser('~/.gitcheck')
     if os.path.exists(filename):
         pass
-
 
 def usage():
     print("Usage: %s [OPTIONS]" % (sys.argv[0]))
@@ -560,7 +532,6 @@ def usage():
     print("  --init-email                         Initialize mail.properties file (has to be modified by user using JSON Format)")
     print("  -c --commit                          Show short commit hash (git rev-parse --short HEAD) ")
     print("  -C --Commit                          Show long commit hash (git rev-parse HEAD) ")
-
 
 def main():
     try:
